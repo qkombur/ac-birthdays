@@ -1,26 +1,46 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import birthdays from './data/birthdays'
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <VillagerList villagers={todaysBirthday()} />
       </header>
     </div>
   );
+}
+
+function VillagerList(props) {
+  const villagers = props.villagers;
+  const villagersList = villagers.map((villager) =>
+    <div key={villager.id}>
+      <img src={`https://animal-crossing.com/assets/img/characters/${villager.image}`} alt="" />
+      <p>It's <a href={`https://nookipedia.com/wiki/${villager.name}`}>{villager.name}</a>'s birthday, make sure to say hello!</p>
+    </div>
+  );
+  return (
+    <h1>{villagersList}</h1>
+  )
+}
+
+
+function getCurrentdate() {
+  let day = new Date().getDate();
+  let month = new Date().getMonth();
+
+  if (day < 10) {
+    day = '0' + day;
+  }
+  if (month < 10) {
+    month = '0' + (month + 1);
+  }
+  return `${day}-${month}-2000`
+}
+
+function todaysBirthday() {
+  return birthdays.filter(villager => villager.birthday === getCurrentdate())
 }
 
 export default App;
