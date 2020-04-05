@@ -7,7 +7,9 @@ function App() {
     <div className="App">
       <header className="App-header">
         <VillagerList villagers={todaysBirthday()} />
+        <footer>Made with ❤ by @qkombur</footer>
       </header>
+
     </div>
   );
 }
