@@ -7,9 +7,9 @@ function App() {
     <div className="App">
       <header className="App-header">
         <VillagerList villagers={todaysBirthday()} />
-        <footer>Made with ❤ by @qkombur</footer>
-      </header>
 
+      </header>
+      <footer>Made with ❤ by @qkombur</footer>
     </div>
   );
 }
@@ -23,7 +23,7 @@ function VillagerList(props) {
     </div>
   );
   return (
-    <h1>{villagersList}</h1>
+    <div>{villagersList}</div>
   )
 }
 
